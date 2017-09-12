@@ -6,10 +6,6 @@
 	path = libraries/bytestring
 	url = ../packages/bytestring.git
 	ignore = untracked
-[submodule "libraries/text"]
-	path = libraries/text
-	url = https://github.com/bollu/text.git
-	ignore = untracked
 [submodule "libraries/Cabal"]
 	path = libraries/Cabal
 	url = ../packages/Cabal.git
@@ -133,9 +129,6 @@
 [submodule ".arc-linters/arcanist-external-json-linter"]
 	path = .arc-linters/arcanist-external-json-linter
 	url = ../arcanist-external-json-linter.git
-[submodule "libraries/prettyprinter-core"]
-	path = libraries/prettyprinter-core
-	url = https://github.com/bollu/prettyprinter-core.git
 [submodule "libraries/prettyprinter"]
 	path = libraries/prettyprinter
 	url = git@github.com:quchen/prettyprinter.git
