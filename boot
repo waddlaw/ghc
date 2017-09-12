@@ -107,10 +107,10 @@ EOF
                 # but in an lndir tree we avoid making .git directories,
                 # so it doesn't exist. We therefore require that every repo
                 # has a LICENSE file instead.
-                if (! -f "$dir/LICENSE") {
-                    print STDERR "Error: $dir/LICENSE doesn't exist.\n";
-                    die "Maybe you haven't done 'git submodule update --init'?";
-                }
+                #if ( ! -f "$dir/LICENSE" -a ! -f "$dir/LICENSE.md" ) {
+                    #print STDERR "Error: $dir/LICENSE doesn't exist.\n";
+                    #die "Maybe you haven't done 'git submodule update --init'?";
+                #}
             }
         }
         else {
