@@ -92,7 +92,6 @@ import {-# SOURCE #-}   DynFlags( DynFlags, hasPprDebug, hasNoDebugOutput,
 import {-# SOURCE #-}   Module( UnitId, Module, ModuleName, moduleName )
 import {-# SOURCE #-}   OccName( OccName )
 
-import BufWrite (BufHandle)
 import FastString
 import qualified Pretty
 import Util

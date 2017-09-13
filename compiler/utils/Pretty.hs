@@ -111,15 +111,9 @@ module Pretty  (
 
   ) where
 
-import BufWrite
 import FastString
-import Panic
 import System.IO
 import Prelude hiding (error)
-
---for a RULES
-import GHC.Base ( unpackCString# )
-import GHC.Ptr  ( Ptr(..) )
 
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as TL
