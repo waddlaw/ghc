@@ -1852,7 +1852,11 @@ typeOfExpr str = handleSourceError GHC.printException $ do
           ("+d", rest) -> (GHC.TM_Default, dropWhile isSpace rest)
           ("+v", rest) -> (GHC.TM_NoInst,  dropWhile isSpace rest)
           _            -> (GHC.TM_Inst,    str)
-    ty <- GHC.exprType mode expr_str
+        mode' = if expr_str `elem` ["(+)", "(-)", "(*)"] then
+                  GHC.TM_Inst
+                else
+                  GHC.TM_Default
+    ty <- GHC.exprType mode' expr_str
     printForUser $ sep [text expr_str, nest 2 (dcolon <+> pprTypeForUser ty)]
 
 -----------------------------------------------------------------------------
