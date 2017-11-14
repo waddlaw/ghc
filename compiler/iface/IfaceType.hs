@@ -837,12 +837,7 @@ pprIfaceForAllCoPart tvs sdoc
 
 ppr_iface_forall_part :: ShowForAllFlag
                       -> [IfaceForAllBndr] -> [IfacePredType] -> SDoc -> SDoc
-ppr_iface_forall_part show_forall tvs ctxt sdoc
-  = sep [ case show_forall of
-            ShowForAllMust -> pprIfaceForAll tvs
-            ShowForAllWhen -> pprUserIfaceForAll tvs
-        , pprIfaceContextArr ctxt
-        , sdoc]
+ppr_iface_forall_part show_forall tvs ctxt sdoc = sep [sdoc]
 
 -- | Render the "forall ... ." or "forall ... ->" bit of a type.
 pprIfaceForAll :: [IfaceForAllBndr] -> SDoc
