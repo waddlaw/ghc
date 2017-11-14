@@ -120,4 +120,4 @@
   url = https://github.com/gmp-tarballs.git
 [submodule ".arc-linters/arcanist-external-json-linter"]
   path = .arc-linters/arcanist-external-json-linter
-  url = https://github.com/arcanist-external-json-linter.git
+  url = https://github.com/ghc/arcanist-external-json-linter.git
