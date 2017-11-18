@@ -888,6 +888,43 @@ genCall blockMap regMap target dsts args = case target of
         ty <- EDSL.deptr (EDSL.ty slot)
         EDSL.store slot =<< cast ty ret
     | otherwise -> panic "genCall: PopCnt not implemented."
+  (PrimTarget (MO_Pdep w))
+    | ([dst], [src, mask]) <- (dsts, args) -> do
+        slot <- lookupLocalReg dst regMap
+
+        src'  <- bind2 cast (EDSL.i (widthInBits w)) (exprToVar blockMap regMap src)
+        mask' <- bind2 cast (EDSL.i (widthInBits w)) (exprToVar blockMap regMap mask)
+
+        arch <- platformArch . targetPlatform <$> getDynFlags
+        f <- let w' = widthInBits w
+                 fn = case arch of
+                   ArchX86_64 -> "llvm.x86.bmi.pdep."
+                   _ ->  "hs_pdep"
+             in EDSL.fun (fn ++ show w') =<< [ EDSL.i w', EDSL.i w' ] --> EDSL.i w'
+
+        Just ret <- EDSL.ccall f [ src', mask' ]
+        ty <- EDSL.deptr (EDSL.ty slot)
+        EDSL.store slot =<< cast ty ret
+    | otherwise -> panic "genCall: Pdep not implemented."
+  (PrimTarget (MO_Pext w))
+    | ([dst], [src, mask]) <- (dsts, args) -> do
+        slot <- lookupLocalReg dst regMap
+
+        src'  <- bind2 cast (EDSL.i (widthInBits w)) (exprToVar blockMap regMap src)
+        mask' <- bind2 cast (EDSL.i (widthInBits w)) (exprToVar blockMap regMap mask)
+
+        arch <- platformArch . targetPlatform <$> getDynFlags
+
+        f <- let w' = widthInBits w
+                 fn = case arch of
+                   ArchX86_64 -> "llvm.x86.bmi.pext."
+                   _ ->  "hs_pext"
+             in EDSL.fun (fn ++ show w') =<< [ EDSL.i w', EDSL.i w' ] --> EDSL.i w'
+
+        Just ret <- EDSL.ccall f [ src', mask' ]
+        ty <- EDSL.deptr (EDSL.ty slot)
+        EDSL.store slot =<< cast ty ret
+    | otherwise -> panic "genCall: Pext not implemented."
   (PrimTarget (MO_Clz w))
     | ([dst], [e]) <- (dsts, args) -> do
         slot <- lookupLocalReg dst regMap
