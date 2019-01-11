@@ -88,14 +88,24 @@ validate-x86_64-linux-deb8-hadrian:
   before_script:
     - git clean -xdf && git submodule foreach git clean -xdf
   script:
-    - ./boot
-    - ./configure $CONFIGURE_ARGS
+#    - ./boot
+#    - ./configure $CONFIGURE_ARGS
     - |
       THREADS=`mk/detect-cpu-count.sh`
-      make V=0 -j$THREADS
+      
+      
+      
+      
+      
+      #make V=0 -j$THREADS
     - |
-      make binary-dist TAR_COMP_OPTS="-1"
-      mv ghc-*.tar.xz ghc.tar.xz
+      # make binary-dist TAR_COMP_OPTS="-1"
+      # mv ghc-*.tar.xz ghc.tar.xz
+
+
+
+
+      
     - |
       # Prepare to push git notes.
       METRICS_FILE=$(mktemp)
@@ -112,7 +122,6 @@ validate-x86_64-linux-deb8-hadrian:
       THREADS=`mk/detect-cpu-count.sh`
       #make $TEST_TYPE THREADS=$THREADS JUNIT_FILE=../../junit.xml METRICS_FILE=$METRICS_FILE
 
-
       echo "test" > $METRICS_FILE
 
 
@@ -122,7 +131,7 @@ validate-x86_64-linux-deb8-hadrian:
 
     - |
       # Push git notes.
-      .gitlab/push-test-metrics.sh
+      METRICS_FILE=$METRICS_FILE .gitlab/push-test-metrics.sh
   artifacts:
     reports:
       junit: junit.xml

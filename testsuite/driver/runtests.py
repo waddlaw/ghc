@@ -383,8 +383,9 @@ else:
                 ' the missing metrics. Alternatively, a baseline may be' + \
                 ' recovered from ci results once fetched (where origin' + \
                 ' is the official ghc git repo):\n\n' + \
-                spacing + 'git fetch origin' + \
-                          ' refs/notes/perf:refs/notes/' + Perf.CiNamespace
+                spacing + 'git fetch ' + \
+                  'https://gitlab.haskell.org/ghc/ghc-performance-notes.git' + \
+                  ' refs/notes/perf:refs/notes/' + Perf.CiNamespace
         else:
             reason = "this is not a git repo so the previous git commit's" + \
                      " metrics cannot be loaded from git notes:"
