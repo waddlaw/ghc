@@ -836,6 +836,7 @@ data WarningFlag =
    | Opt_WarnImplicitKindVars             -- Since 8.6
    | Opt_WarnSpaceAfterBang
    | Opt_WarnMissingDerivingStrategies    -- Since 8.8
+   | Opt_WarnUnusedPackages               -- Since 8.10
    deriving (Eq, Show, Enum)
 
 data Language = Haskell98 | Haskell2010
@@ -4047,7 +4048,8 @@ wWarningFlagsDeps = [
   flagSpec "star-binder"                 Opt_WarnStarBinder,
   flagSpec "star-is-type"                Opt_WarnStarIsType,
   flagSpec "missing-space-after-bang"    Opt_WarnSpaceAfterBang,
-  flagSpec "partial-fields"              Opt_WarnPartialFields ]
+  flagSpec "partial-fields"              Opt_WarnPartialFields,
+  flagSpec "unused-packages"             Opt_WarnUnusedPackages ]
 
 -- | These @-\<blah\>@ flags can all be reversed with @-no-\<blah\>@
 negatableFlagsDeps :: [(Deprecation, FlagSpec GeneralFlag)]

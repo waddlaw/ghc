@@ -28,3 +28,5 @@ test('MissingMod', normal, multimod_compile, ['MissingMod', '-Wmissing-home-modu
 test('StarBinder', normal, compile, [''])
 
 test('Overflow', normal, compile, [''])
+
+test('UnusedPackages', normal, multimod_compile, ['UnusedPackages.hs', '-package=bytestring -package=base -Wunused-packages'])
