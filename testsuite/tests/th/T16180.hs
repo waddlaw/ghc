@@ -1,4 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE CPP #-}
 
 module Main where
 
@@ -9,13 +10,13 @@ $(do
    -- some architectures require a "_" symbol prefix...
    -- GHC defines a LEADING_UNDERSCORE CPP constant to indicate this.
    addForeignSource LangAsm
-      "#if defined(LEADING_UNDERSCORE)\n\
+#if LEADING_UNDERSCORE
       \.global \"_mydata\"\n\
       \_mydata:\n\
-      \#else\n\
+#else
       \.global \"mydata\"\n\
       \mydata:\n\
-      \#endif\n\
+#endif
       \.ascii \"Hello world\\0\"\n"
    return [])
 
