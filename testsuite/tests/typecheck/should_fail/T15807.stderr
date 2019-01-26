@@ -1,5 +1,5 @@
 
-T15807.hs:12:24: error:
+T15807.hs:12:23: error:
     • Expecting one more argument to ‘f’
       Expected a type, but ‘f’ has kind ‘k0 -> *’
     • In the first argument of ‘App’, namely ‘f’

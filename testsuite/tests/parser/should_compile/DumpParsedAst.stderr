@@ -292,7 +292,7 @@
                {OccName: F1}))
              (Nothing)
              [(HsTypeArg
-               ({ DumpParsedAst.hs:17:7-11 }
+               ({ DumpParsedAst.hs:17:6-11 }
                 (HsTyVar
                  (NoExt)
                  (NotPromoted)
@@ -332,7 +332,7 @@
                      ({ DumpParsedAst.hs:17:19 }
                       (Unqual
                        {OccName: T}))))
-                   ({ DumpParsedAst.hs:17:22-26 }
+                   ({ DumpParsedAst.hs:17:21-26 }
                     (HsTyVar
                      (NoExt)
                      (NotPromoted)

@@ -536,7 +536,7 @@
                 {Name: DumpRenamedAst.F1})
                (Nothing)
                [(HsTypeArg
-                 ({ DumpRenamedAst.hs:24:7-11 }
+                 ({ DumpRenamedAst.hs:24:6-11 }
                   (HsTyVar
                    (NoExt)
                    (NotPromoted)
@@ -572,7 +572,7 @@
                        (NotPromoted)
                        ({ DumpRenamedAst.hs:24:19 }
                         {Name: DumpRenamedAst.T})))
-                     ({ DumpRenamedAst.hs:24:22-26 }
+                     ({ DumpRenamedAst.hs:24:21-26 }
                       (HsTyVar
                        (NoExt)
                        (NotPromoted)
